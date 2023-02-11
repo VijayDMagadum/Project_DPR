@@ -1,0 +1,24 @@
+
+  <form [formGroup]="materialsconsuption" (ngSubmit)="onSubmit()" >
+    <div class="form-group">
+      <label>Activity Name</label>
+      <input type="text" class="form-control"   formControlName="activityName">
+    </div>
+    
+    <div class="form-group" >
+        <label>Consumption Material </label>
+     
+        <input type="text" class="form-control" formControlName="consumptionMaterial">
+        
+    </div>
+    <div class="form-group">
+      <label>Consuption Quantity</label>
+      <input type="number" class="form-control"formControlName="consuptionQuantity">
+    </div>
+    <div class="form-group">
+      <label>Consuption Unit</label>
+      <input type="text" class="form-control"formControlName="consyptionUnit">
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>

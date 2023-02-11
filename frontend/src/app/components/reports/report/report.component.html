@@ -1,0 +1,55 @@
+<div class="container mt-5">    
+    <mat-tab-group>
+        <mat-tab>   
+          <ng-template mat-tab-label>
+          
+           <h3>LABOUR REPORT</h3> 
+          </ng-template>
+          <app-labour-reports></app-labour-reports>
+
+    
+    
+        </mat-tab>
+      
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <h3>CEMENT REPORT</h3>
+          </ng-template>
+          <app-cement-reports></app-cement-reports>
+          
+    
+        </mat-tab>
+      
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <h3>MATERIAL  REPORT</h3>
+          </ng-template>
+          <app-material-reports></app-material-reports>
+    
+        </mat-tab>
+    
+     
+    
+    <mat-tab>
+        <ng-template mat-tab-label>
+          <h3>MATERIAL CONSUMPTION REPORT</h3>
+        </ng-template>
+        <app-material-consumption></app-material-consumption>
+           
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <h3>REMARKS</h3>
+        </ng-template>
+        <app-remarks-reports></app-remarks-reports>
+           
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <h3>CONFIRM DETAILS</h3>
+        </ng-template>
+       CONFIRM TABLE 
+           <button class="btn btn-primary">Submit</button>
+      </mat-tab>
+    </mat-tab-group>
+</div>

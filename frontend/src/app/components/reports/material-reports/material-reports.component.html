@@ -1,0 +1,47 @@
+
+  <form [formGroup]="materials" (ngSubmit)="onSubmit()" >
+    <div class="form-group">
+      <label>Material Received</label>
+      <input type="number" class="form-control"   formControlName="materialReceived">
+    </div>
+    
+    <div class="form-group" >
+        <label>Supplier Name </label>
+     
+        <input type="text" class="form-control" formControlName="supplierName">
+        
+    </div>
+    <div class="form-group">
+      <label>Quantity</label>
+      <input type="text" class="form-control"formControlName="quality">
+    </div>
+    <div class="form-group">
+      <label>Bill No</label>
+      <input type="text" class="form-control"formControlName="billNo">
+    </div>
+    <div class="form-group">
+      <label>Amount</label>
+      <input type="number" class="form-control" formControlName="amount"><br>
+    </div>
+      <br>
+    <label>Paid</label>
+    <div class="form-group mt-2 ml-2">
+      <label>
+        <input type="radio" value="Yes" formControlName="paid">
+          <span>Yes</span>
+      </label>&nbsp;&nbsp;
+
+      <label>
+        <input type="radio" value="No" formControlName="paid">
+          <span>No</span>
+      </label>
+    </div><br>
+
+      <div class="form-group">
+        <label>Time</label>
+        <input type="text" class="form-control" formControlName="time"><br>
+      </div>
+   
+    
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
