@@ -19,7 +19,9 @@ data:any;
 
       console.log(data);
       this.data=data;
+      
     });
+    
   }
 
   deleteSite(id:any){
@@ -34,8 +36,8 @@ data:any;
     )
   }
   addsite(id:any){
-    localStorage.removeItem('siteId');
-    localStorage.setItem('siteId',id);
-    console.log("in home component",localStorage.getItem('siteId'));
+    // localStorage.removeItem('siteId');
+    // localStorage.setItem('siteId',id);
+    // console.log("in home component",localStorage.getItem('siteId'));
   }
 }

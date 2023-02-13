@@ -17,10 +17,8 @@ export class LabourService {
   constructor(private http: HttpClient, private route: ActivatedRoute) { }
 
 
-    getSiteid(){
-      localStorage.removeItem('siteId');
-    }
-  addLabourReports(labourData: any) {
+   
+  addLabourReports(labourData: any): Observable<any> {
     console.log("inside Add service",labourData)
   return this.http.post(`${this.url}${this.SiteId}`,labourData)
     }
@@ -36,7 +34,7 @@ export class LabourService {
         return this.http.delete(`${URL}/form/deletelabour/${this.SiteId}/${id}`)
       }
       
-    updatelabour(id:number,body:LabourReport){
+    updatelabour(id:number,body:LabourReport): Observable<any>{
       return this.http.put(`${URL}/form/ulabopur/${id}`,body)
     }
 }

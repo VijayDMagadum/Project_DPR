@@ -1,4 +1,4 @@
-import { Component, Directive, ElementRef, OnInit } from '@angular/core';
+import { Component, Directive, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LabourReport } from '../models/labour';
 import { LabourService } from '../services/labour.service';
@@ -11,7 +11,9 @@ import { LabourService } from '../services/labour.service';
 export class LabourReportsComponent implements OnInit {
   
     labours:any
-    
+    message: any;
+
+    @Output() messageEvent = new EventEmitter<any>();
 
   dataSource:any;
 
@@ -34,7 +36,6 @@ export class LabourReportsComponent implements OnInit {
     clickedRows = new Set<any>();
     ngOnInit(): void {
       console.log("this site id ",localStorage.getItem('siteId'))
-      console.log(this.dataSource)
       this.labourDataService.getallLabours().subscribe(data => {
 
         console.log("get all labour data:",data);
@@ -51,6 +52,7 @@ export class LabourReportsComponent implements OnInit {
 
           console.log(data);
           this.dataSource=data.data;
+          this.messageEvent.emit(this.dataSource)
         });
       })
     // this.labourDataService.addLabourReports(this.labours.value).subscribe(

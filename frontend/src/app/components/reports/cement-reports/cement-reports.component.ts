@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
+import { CementService } from '../services/cement.service';
 
 @Component({
   selector: 'app-cement-reports',
@@ -8,22 +9,38 @@ import { FormBuilder, FormControl } from '@angular/forms';
 })
 export class CementReportsComponent implements OnInit {
 cement:any;
-
-  constructor(private fb:FormBuilder) { 
+cementData:any;
+show=false;
+  constructor(private fb:FormBuilder,private cementService:CementService) { 
     this.cement = this.fb.group({
       openingBalance: [''],
       cementReceived: [''],
-      totalStack: [''],
-      consuptionToday: [''],
+      totalStock: [''],
+      consumptionToday: [''],
       closingBalance: [''],
     });
 
   }
   onSubmit(){
     console.log(this.cement.value)
+    
   }
+
+addCement(){
+  this.cementService.addCement(this.cement.value).subscribe(data=>{
+    console.log("Cement Data has been added")
+  })
+}
 
   ngOnInit(): void {
-  }
 
+
+  }
+showData(){
+  this.cementService.getCement().subscribe(data=>{
+    console.log("Cement Recieved",data)
+this.cementData=data
+  })
+this.show=true
+}
 }

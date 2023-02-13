@@ -1,5 +1,5 @@
 
-  <form [formGroup]="materials" (ngSubmit)="onSubmit()" >
+  <form [formGroup]="materials" (ngSubmit)="addMaterials()" >
     <div class="form-group">
       <label>Material Received</label>
       <input type="number" class="form-control"   formControlName="materialReceived">
@@ -45,3 +45,66 @@
     
     <button type="submit" class="btn btn-primary">Save</button>
   </form>
+
+
+
+
+  
+  <h1>Added Labours</h1>
+  
+  
+    <table mat-table [dataSource]="materialDataSource" class="mat-elevation-z8 demo-table">
+        
+      <ng-container matColumnDef="demo-materialReceived">
+        <th mat-header-cell *matHeaderCellDef> materialReceived </th>
+        <td mat-cell *matCellDef="let element"> {{element.materialReceived}} </td>
+      </ng-container>
+      <ng-container matColumnDef="demo-supplierName">
+        <th mat-header-cell *matHeaderCellDef> supplierName </th>
+        <td mat-cell *matCellDef="let element"> {{element.supplierName}} </td>
+      </ng-container>
+    
+     
+      <ng-container matColumnDef="demo-quality">
+        <th mat-header-cell *matHeaderCellDef> quality </th>
+        <td mat-cell *matCellDef="let element"> {{element.quality}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="demo-billNo">
+        <th mat-header-cell *matHeaderCellDef> billNo </th>
+        <td mat-cell *matCellDef="let element"> {{element.billNo}} </td>
+      </ng-container>
+    
+     
+      <ng-container matColumnDef="demo-amount">
+        <th mat-header-cell *matHeaderCellDef> amount </th>
+        <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="demo-paid">
+        <th mat-header-cell *matHeaderCellDef> paid </th>
+        <td mat-cell *matCellDef="let element"> {{element.paid}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="demo-time">
+        <th mat-header-cell *matHeaderCellDef> time </th>
+        <td mat-cell *matCellDef="let element"> {{element.time | date: 'yyyy-MM-dd' }} </td>
+      </ng-container>
+      
+      
+      <ng-container matColumnDef="demo-action">
+        <th mat-header-cell *matHeaderCellDef> Action</th>
+        
+        <td mat-cell *matCellDef="let element"> <button class="btn btn-danger"(click)=delete(element._id)>Delete</button>&nbsp;
+          <button class="btn btn-success"  >Update</button> </td>
+        
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr
+        mat-row
+        (click)="clickedRows.add(row)"
+        [class.demo-row-is-clicked]="clickedRows.has(row)"
+        *matRowDef="let row; columns: displayedColumns;"
+    ></tr>
+    </table>

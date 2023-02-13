@@ -23,4 +23,17 @@ export class SiteService {
   deleteSite(id:any){
     return this.http.delete(`${URL}/form/deletesite/${id}`)
   }
+  setSiteId(id:any){
+    const siteId = localStorage.getItem('siteId');
+    if(siteId==id){
+      console.log("Id Exists")
+      localStorage.removeItem('siteId')
+      console.log("site id Removed")
+      localStorage.setItem('siteId',id)
+    }
+    else{
+      console.log("NOt present")
+      localStorage.setItem('siteId',id);
+    }
+  }
 }

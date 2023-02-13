@@ -7,6 +7,8 @@ import { ReportComponent } from './components/reports/report/report.component';
 import { HomeComponent } from './components/home/home/home.component';
 import { SiteComponent } from './components/reports/site/site.component';
 import { AllReportsComponent } from './components/reports/all-reports/all-reports.component';
+import { LabourReport } from './components/reports/models/labour';
+import { CementReportsComponent } from './components/reports/cement-reports/cement-reports.component';
 
 
 const routes: Routes = [
@@ -23,8 +25,17 @@ const routes: Routes = [
   {
     path:'reports/:siteId',
     component:ReportComponent,
-    pathMatch:'full'
   },
+    // {
+    //   path:'labourReport',
+    // component:LabourReport,
+    // },
+    // {
+    //   path:'cementReport',
+    // component:CementReportsComponent,
+    // },
+   
+
   {
     path:'login',
     component:LoginComponent,
