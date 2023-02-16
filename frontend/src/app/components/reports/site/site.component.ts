@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import{Site} from '../models/Site'
-import { SiteService } from '../services/site.service';
+import { SiteService } from './services/site.service';
 
 
 @Component({
@@ -14,7 +14,7 @@ export class SiteComponent implements OnInit {
 
   sites:any
   constructor(private siteservice:SiteService,private router:Router,private fb:FormBuilder) { }
-
+  currentDate: Date = new Date();
   ngOnInit(): void {
     this.sites = this.fb.group({
       site: [''],

@@ -26,7 +26,9 @@ import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { MaterialConsumptionComponent } from './components/reports/material-consumption/material-consumption.component'
+import { MaterialConsumptionComponent } from './components/reports/material-consumption/material-consumption.component';
+import { AdminNavBarComponent } from './components/admin/admin-nav-bar/admin-nav-bar.component';
+import { ReportsHomeComponent } from './components/reports/reports-home/reports-home.component'
 
 
 @NgModule({
@@ -44,7 +46,9 @@ import { MaterialConsumptionComponent } from './components/reports/material-cons
     ReportComponent,
     SiteComponent,
     AllReportsComponent,
-    MaterialConsumptionComponent
+    MaterialConsumptionComponent,
+    AdminNavBarComponent,
+    ReportsHomeComponent
   ],
   imports: [
     BrowserModule,

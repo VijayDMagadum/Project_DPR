@@ -1,7 +1,7 @@
 import { Component, Directive, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LabourReport } from '../models/labour';
-import { LabourService } from '../services/labour.service';
+import { LabourService } from './services/labour.service';
 
 @Component({
   selector: 'app-labour-reports',
@@ -12,8 +12,8 @@ export class LabourReportsComponent implements OnInit {
   
     labours:any
     message: any;
-
-    @Output() messageEvent = new EventEmitter<any>();
+    @Input() SiteID:any
+    // @Output() messageEvent = new EventEmitter<any>();
 
   dataSource:any;
 
@@ -36,7 +36,7 @@ export class LabourReportsComponent implements OnInit {
     clickedRows = new Set<any>();
     ngOnInit(): void {
       console.log("this site id ",localStorage.getItem('siteId'))
-      this.labourDataService.getallLabours().subscribe(data => {
+      this.labourDataService.getallLabours(localStorage.getItem('siteId')).subscribe(data => {
 
         console.log("get all labour data:",data);
         this.dataSource=data.data;
@@ -46,13 +46,13 @@ export class LabourReportsComponent implements OnInit {
     
     addLabourReports() {
       console.log(this.labours.value)
-      this.labourDataService.addLabourReports(this.labours.value).subscribe(data=>{
+      this.labourDataService.addLabourReports(this.labours.value,this.SiteID).subscribe(data=>{
         console.log("data added succesfully")
-        this.labourDataService.getallLabours().subscribe(data => {
+        this.labourDataService.getallLabours(localStorage.getItem('siteId')).subscribe(data => {
 
           console.log(data);
           this.dataSource=data.data;
-          this.messageEvent.emit(this.dataSource)
+         
         });
       })
     // this.labourDataService.addLabourReports(this.labours.value).subscribe(
@@ -69,18 +69,15 @@ export class LabourReportsComponent implements OnInit {
     }
     delete(id:any){
       console.log(id)
-      this.labourDataService.deletelabour(id)
+      this.labourDataService.deletelabour(id,this.SiteID)
       .subscribe(
         
-        data => {console.log(data),this.labourDataService.getallLabours().subscribe(data => {
+        data => {
+          console.log(data),
+          this.labourDataService.getallLabours(localStorage.getItem('siteId')).subscribe(data => {
 
           console.log(data);
           this.dataSource=data.data;
-          this.labourDataService.getallLabours().subscribe(data => {
-
-            console.log(data);
-            this.dataSource=data.data;
-          });
         });},
         error => console.error(error)
       );

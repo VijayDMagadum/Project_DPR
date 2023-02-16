@@ -95,7 +95,7 @@ exports.addLabourReports = async (req, res) => {
         data: UserForm.labourReport,
       
       });
-      console.log(UserForm.labourReport);
+     
     });
   };
   

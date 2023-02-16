@@ -9,13 +9,13 @@ import URL from 'src/helper';
 export class CementService {
 
   constructor(private http :HttpClient) { }
-  SiteId=localStorage.getItem('siteId')
-  getCement(): Observable<any>{
-    return this.http.get(`${URL}/form/getcement/${this.SiteId}`)
+  // SiteId=localStorage.getItem('siteId')
+  getCement(SiteID:any): Observable<any>{
+    return this.http.get(`${URL}/form/getcement/${SiteID}`)
   }
 
-addCement(data:any){
-  return this.http.post(`${URL}/form/addcement/${this.SiteId}`,data)
+addCement(data:any,SiteID:any){
+  return this.http.post(`${URL}/form/addcement/${SiteID}`,data)
   
 }
 }

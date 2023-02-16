@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LabourService } from '../services/labour.service';
-import { SiteService } from '../services/site.service';
+import { LabourService } from '../labour-reports/services/labour.service';
+import { SiteService } from '../site/services/site.service';
 
 @Component({
   selector: 'app-report',
@@ -14,12 +14,8 @@ export class ReportComponent implements OnInit {
   SiteID:any;
   ngOnInit(): void {
   
-    this.SiteID = this.route.snapshot.params['siteId'];
-    this.siteService.setSiteId(this.SiteID);
+    // this.SiteID = this.route.snapshot.params['siteId'];
+    // this.siteService.setSiteId(this.SiteID);
   }
-  message:any;
-
-  receiveMessage($event:any) {
-    this.message = $event
-  }
+ 
 }

@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
 
+
 @Injectable({
   providedIn: 'root'
 })
-export class RemarkService {
+export class AllReportService {
 
   constructor() { }
+
+
+
+
+
 }

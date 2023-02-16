@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { MaterialconService } from './services/materialcon.service';
 
 @Component({
   selector: 'app-material-consumption',
@@ -8,21 +9,59 @@ import { FormBuilder } from '@angular/forms';
 })
 export class MaterialConsumptionComponent implements OnInit {
   materialsconsuption:any;
+materialConsuptionData:any;
 
-  constructor(private fb:FormBuilder) { 
+@Input() SiteID:any;
+
+  constructor(private fb:FormBuilder,private materialConsuptionService:MaterialconService) { 
 
     this.materialsconsuption = this.fb.group({
       activityName: [''],
       consumptionMaterial: [''],
-      consuptionQuantity: [''],
-      consyptionUnit: [''],
+      consumptionQuantity: [''],
+      consumptionUnit: [''],
     });
 
   }
+
+
+  displayedColumns: string[] = ['demo-activityName','demo-consumptionMaterial', 'demo-consumptionQuantity', 'demo-consumptionUnit','demo-action'];
+  clickedRows = new Set<any>();
+
   onSubmit(){
     console.log(this.materialsconsuption.value)
   }
   ngOnInit(): void {
+    this.materialConsuptionService.getmaterialConsuptionReports(this.SiteID).subscribe(data=>{
+      console.log("Materialconsption  recieved");
+      this.materialConsuptionData=data.data
+
+    })
+  }
+
+  addMaterialConsuption(){
+    this.materialConsuptionService.addMaterialconsumption(this.materialsconsuption.value,this.SiteID).subscribe(data=>{
+      console.log("Material Consuption data has been added")
+      
+      this.materialConsuptionService.getmaterialConsuptionReports(this.SiteID).subscribe(data=>{
+        console.log("Materialconsption  recieved");
+        this.materialConsuptionData=data.data
+  
+      })
+    })
+  }
+
+  deleteMaterialConsuptionData(id:any){
+
+this.materialConsuptionService.deleteMaterialConsuptions(id,this.SiteID).subscribe(data=>{
+  console.log("Materal Consuption Data has been deleted");
+
+  this.materialConsuptionService.getmaterialConsuptionReports(this.SiteID).subscribe(data=>{
+    console.log("Materialconsption  recieved");
+    this.materialConsuptionData=data.data
+
+  });
+})
   }
 
 }

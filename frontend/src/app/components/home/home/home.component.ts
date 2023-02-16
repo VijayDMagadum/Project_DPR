@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SiteService } from '../../reports/services/site.service';
+import { SiteService } from '../../reports/site/services/site.service';
 import {ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-home',
@@ -11,8 +11,7 @@ export class HomeComponent implements OnInit {
 data:any;
   constructor(private siteservice:SiteService) { }
 
-
-  displayedColumns: string[] = ['demo-siteName', 'demo-date',"demo-delete"];
+  displayedColumns: string[] = ['demo-siteName', 'demo-date',"demo-action"];
 
   ngOnInit(): void {
     this.siteservice.getallSites().subscribe(data => {
@@ -39,5 +38,8 @@ data:any;
     // localStorage.removeItem('siteId');
     // localStorage.setItem('siteId',id);
     // console.log("in home component",localStorage.getItem('siteId'));
+    this.siteservice.setSiteId(id)
   }
+
+  
 }

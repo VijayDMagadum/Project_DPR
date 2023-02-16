@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { RemarkService } from './services/remark.service';
 
 @Component({
   selector: 'app-remarks-reports',
@@ -8,8 +9,9 @@ import { FormBuilder } from '@angular/forms';
 })
 export class RemarksReportsComponent implements OnInit {
   remarks:any;
+  @Input() SiteID:any
 
-  constructor(private fb:FormBuilder) { 
+  constructor(private fb:FormBuilder,private remarkSerivice:RemarkService) { 
 
     this.remarks = this.fb.group({
       remarks: [''],
@@ -22,5 +24,9 @@ export class RemarksReportsComponent implements OnInit {
   }
   ngOnInit(): void {
   }
-
+addRemarks(){
+  this.remarkSerivice.addRemarks(this.remarks.value,this.SiteID).subscribe(data=>{
+    console.log("remarks has been Added")
+  })
+}
 }
